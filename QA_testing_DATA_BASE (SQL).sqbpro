@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="QA_testing.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1644"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Progress" custom_title="0" dock_id="1" table="4,8:mainProgress"/><dock_state state="000000ff00000000fd0000000100000002000002b5000004f7fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000002b50000012e00ffffff000002790000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Class_rooms" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="84"/><column index="2" value="111"/><column index="3" value="90"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Progress" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="71"/><column index="2" value="67"/><column index="3" value="81"/><column index="4" value="40"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Testing" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="51"/><column index="2" value="72"/><column index="3" value="71"/><column index="4" value="82"/><column index="5" value="63"/><column index="6" value="98"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">CREATE TABLE Testing
+(
+	User_id INTEGER PRIMARY KEY,
+	First_name VARCHAR(255) NOT NULL,
+	Last_name VARHCAR(255) NOT NULL,
+	Country VARCHAR(255) NOT NULL,
+	Longuage VARCHAR(255) NULL,
+	Date_birth DATETIME NULL
+);</sql><sql name="SQL 2*">INSERT INTO Testing
+	(First_name, Last_name, Country, Longuage, Date_birth)
+VALUES
+	('Artem','Marakulin', 'Russian', 'English', '18.05.1999'),
+	('Dasha','Sudarenko', 'Russian', 'English', '28.03.2000'),
+	('Grisha','Izmailov', 'Russian', 'English', '18.05.1989');
+	</sql><sql name="SQL 3*">CREATE TABLE Class_rooms
+(
+	Classroom_id INTEGER PRIMARY KEY,
+	Faculity VARCHAR(255) NOT NULL,
+	Num_students INTEGER NOT NULL
+	);</sql><sql name="SQL 4*">INSERT INTO Class_rooms
+	(Faculity, Num_students)
+VALUES
+	('Manual', 5),
+	('Auto', 10),
+	('Selenium', 5),
+	('Auto + manual', 10);</sql><sql name="SQL 5*">CREATE TABLE Progress
+(
+	ProgressID INTEGER PRIMARY KEY,
+	StudentID INTEGER NOT NULL,
+	ClassroomID INTEGER NOT NULL,
+	Score INTEGER NOT NULL,
+	FOREIGN KEY (StudentID) REFERENCES Testing (User_id)
+	FOREIGN KEY (ClassroomID) REFERENCES Class_rooms (Classroom_id)
+);</sql><sql name="SQL 6*">INSERT INTO Progress
+	(StudentID, ClassroomID, Score)
+VALUES
+	(1,1,10),
+	(2,1,5),
+	(3,1,7),
+	(1,2,9),
+	(2,2,7),
+	(3,2,5),
+	(1,3,7),
+	(2,3,8),
+	(3,3,10);
+	</sql><current_tab id="5"/></tab_sql></sqlb_project>
